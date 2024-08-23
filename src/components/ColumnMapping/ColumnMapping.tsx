@@ -15,7 +15,9 @@ const ColumnMapping: React.FC<ColumnMappingProps> = ({ columns, previews, onMapp
     console.log('Columns:', columns);
     console.log('Preview:', previews);
   }, [columns, previews]);
-
+useEffect(()=>{
+  onMappingChange('email','Email');
+},[])
   return (
     <div className=" bg-white shadow-md rounded-lg">
       <img src="/step2loader.png" alt="" className="w-screen mb-6" />

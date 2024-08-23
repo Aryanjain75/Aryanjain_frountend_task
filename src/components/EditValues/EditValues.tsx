@@ -186,7 +186,6 @@ const EditValues: React.FC<EditValuesProps> = ({ mapping }) => {
               {mapping.companyname && <th className="text-left border-b p-2">Company Name</th>}
               {mapping.linkedinprofileurl && <th className="text-left border-b p-2">LinkedIn Profile URL</th>}
               {mapping.jobtitle && <th className="text-left border-b p-2">Job Title</th>}
-              {mapping.email && <th className="text-left border-b p-2">Email</th>} {/* Added email header */}
             </tr>
           </thead>
           <tbody>
@@ -313,23 +312,7 @@ const EditValues: React.FC<EditValuesProps> = ({ mapping }) => {
                       )}
                     </td>
                   )}
-                  {mapping.email && (
-                    <td className="p-2 relative">
-                      <input
-                        type="text"
-                        value={row.email || ''}
-                        onChange={(e) => handleInputChange(firstIndex + index, 'email', e.target.value)}
-                        className={`w-full border p-1 rounded ${rowErrors['email'] ? 'border-red-500 bg-red-100' : ''}`}
-                      />
-                      {rowErrors['email'] && (
-                        <Tippy content={rowErrors['email']} arrow={false}>
-                          <span className="text-red-500 ml-2 cursor-pointer absolute top-1/2 right-2 transform -translate-y-1/2">
-                            <i className="fa-solid fa-circle-exclamation"></i>
-                          </span>
-                        </Tippy>
-                      )}
-                    </td>
-                  )}
+                 
                 </tr>
               );
             })}

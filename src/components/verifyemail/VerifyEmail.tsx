@@ -21,8 +21,9 @@ const VerifyEmails: React.FC = () => {
                 return newStatusData;
             });
         }, 10000);
-    
+    console.log(currentItems);
         return () => clearInterval(interval);
+
     }, [emailData, setStatusData]);
 
     // Paginate data
@@ -38,6 +39,8 @@ const VerifyEmails: React.FC = () => {
 
     return (
         <div className="p-6 bg-white shadow-md rounded-lg">
+                  <img src="/step4loader.png" alt="" className="w-screen" />
+
             <h2 className="text-xl font-semibold mb-4">Verify Emails</h2>
             <p className="text-sm text-gray-500 mb-4">
                 Verify email addresses for leads to improve lead generation efforts.
@@ -63,7 +66,7 @@ const VerifyEmails: React.FC = () => {
                                 <td className="p-2">{row['lastname']}</td>
                                 <td className="p-2">{row['companydomain']}</td>
                                 <td className="p-2">{row['linkedinprofileurl']}</td>
-                                <td className="p-2">{row["Email"] || '-'}</td>
+                                <td className="p-2">{row["email"] || '-'}</td>
                                 <td className="p-2">
                                     {status === 'Verifying' ? (
                                         <span className="flex items-center">

@@ -14,7 +14,7 @@ export default function Sidebar() {
     <aside className="w-72 h-screen flex flex-col justify-between border-r border-gray-200 bg-white">
       {/* Logo */}
       <div className="px-6 py-4">
-        <Image src="/Screenshot 2024-08-21 183809.png" alt="Shoden Logo" width={122} height={40} />
+        <Link href={"/leads"}><Image src="/Screenshot 2024-08-21 183809.png" alt="Shoden Logo" width={122} height={40} /></Link>
       </div>
 
       <Separator className="my-4" />
