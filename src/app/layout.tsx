@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { Inter as FontSans } from "next/font/google";
+import Sidebar from "@/components/Sidebar/Sidebar";
+import Footer from "@/components/Footer/Footer";
+import { cn } from "@/lib/utils";
+import { DataProvider } from '@/context/DataContext';
+import { FileUploadProvider } from '@/context/FileuploadContext';
+// Import the LeadsProvider from your context
+import { LeadsProvider } from "@/context/LeadContext";
+import { VerifyEmailsProvider } from '@/context/VerifyEmailsContext';
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -11,12 +23,39 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn(
+          inter.className,
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <div className="flex min-h-screen flex-col">
+          <div className="flex flex-1">
+            <Sidebar />
+            <div className="flex-1 flex flex-col">
+              {/* Wrap the children with LeadsProvider */}
+              <LeadsProvider>
+              <DataProvider>
+              <FileUploadProvider>
+              <VerifyEmailsProvider>
+
+                <main className="flex-grow">{children}</main>
+                </VerifyEmailsProvider>
+                </FileUploadProvider>
+                </DataProvider>
+              </LeadsProvider>
+              
+            </div>
+          </div>
+          <Footer /> {/* Footer outside of the main content area */}
+        </div>
+      </body>
     </html>
   );
 }
