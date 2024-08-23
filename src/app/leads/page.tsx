@@ -16,18 +16,12 @@ export default function LeadsListPage() {
   </div>
   <div className="flex justify-between items-center">
         <FilterComponent />
-        
       </div>
     <div className="p-6 flex flex-col space-y-6">
      
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-semibold">All Leads List</h2>
-        <button
-          className="btn btn-primary"
-          onClick={() => router.push('/leads/uploads')}
-        >
-          Create New List
-        </button>
+       
       </div>
       <Separator className="my-4" />
       <LeadsTable />

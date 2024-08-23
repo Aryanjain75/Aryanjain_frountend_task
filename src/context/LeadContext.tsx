@@ -50,13 +50,12 @@ export const LeadsProvider = ({ children }: { children: React.ReactNode }) => {
     get(userRef).then((snapshot) => {
       if (snapshot.exists()) {
         const usersArray = Object.entries(snapshot.val()).map(([key, value]: [string, any]) => {
-          const { id, name, type } = value.data;
 
           return {
             id: value.id,
             name: value.name,
             exportType: value.type,
-            numberOfLeads: Math.floor(Math.random() * 1000), // Mock number of leads
+            numberOfLeads: value.data.length, // Mock number of leads
             createdOn: new Date().toISOString(), // Mock created date
             status: 'Completed', // Mock status
           } as Lead;

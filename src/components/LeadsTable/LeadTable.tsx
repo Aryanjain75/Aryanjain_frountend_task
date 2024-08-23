@@ -69,21 +69,15 @@ useEffect(()=>{console.log(currentLeads)});
               className="gap-[0.50rem] rounded-[28px] border border-solid border-gray-300 text-blue_gray-300 w-64 p-4"
             />
             <button
-              className="min-w-[10.00rem] gap-[0.50rem] rounded-[28px] font-medium tracking-[0.00rem] bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 flex items-center"
-            >
-              <img
-                src="img_download.svg"
-                width={16}
-                height={16}
-                alt="Download"
-                className="h-[1.00rem] w-[1.80rem]"
-              />
-              Create New List
-            </button>
+          className="btn btn-primary"
+          onClick={() => router.push('/leads/uploads')}
+        >
+          Create New List
+        </button>
           </div>
         </div>
       </div>
-      <table className="table-auto w-full text-left border-collapse mb-4">
+      <table className="table-auto w-full text-left border-collapse mb-4"> 
         <thead>
           <tr className="bg-gray-100">
             <th className="px-4 py-2 text-gray-600">Name</th>
