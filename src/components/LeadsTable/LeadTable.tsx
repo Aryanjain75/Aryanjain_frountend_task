@@ -57,10 +57,10 @@ useEffect(()=>{console.log(currentLeads)});
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
-      <div className="border-b-[0.5px] border-solid border-blue_gray-50 bg-foundation-background-lighter p-[1.80rem]">
+      <div className="border-b-[0.5px] border-solid border-blue_gray-50 flex-row bg-foundation-background-lighter p-[1.80rem]">
         <div className="flex items-start justify-between flex-row">
           <h6 className="mt-[0.50rem]">All Leads List</h6>
-          <div className="flex flex-1 justify-end gap-[0.50rem] self-center sm:flex-col sm:self-stretch flex-row h-11">
+          <div className="flex flex-1 justify-end flex-row gap-[0.50rem] self-center  sm:self-stretch  h-11">
             <input
               name="search"
               placeholder="Search by name"
@@ -69,7 +69,7 @@ useEffect(()=>{console.log(currentLeads)});
               className="gap-[0.50rem] rounded-[28px] border border-solid border-gray-300 text-blue_gray-300 w-64 p-4"
             />
             <button
-          className="btn btn-primary"
+          className="btn btn-primary border-2 bg-gradient-to-r from-[#8C57EA] to-[#5570E8] border-black p-2 justify-center items-center flex-wrap flex rounded-full"
           onClick={() => router.push('/leads/uploads')}
         >
           Create New List

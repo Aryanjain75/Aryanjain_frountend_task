@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
-import { get, ref } from 'firebase/database';
+import { get, ref, onValue } from 'firebase/database';
 import { database } from '@/firebase/firebaseConfig';
 
 interface Lead {
@@ -47,10 +47,10 @@ export const LeadsProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const userRef = ref(database, "users");
-    get(userRef).then((snapshot) => {
+    
+    const unsubscribe = onValue(userRef, (snapshot) => {
       if (snapshot.exists()) {
         const usersArray = Object.entries(snapshot.val()).map(([key, value]: [string, any]) => {
-
           return {
             id: value.id,
             name: value.name,
@@ -65,9 +65,12 @@ export const LeadsProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         console.log("No data available");
       }
-    }).catch((error) => {
+    }, (error) => {
       console.error("Error fetching users:", error);
     });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   const renameLead = (id: string, newName: string) => {
